@@ -3,12 +3,10 @@ use usni\library\widgets\Thumbnail;
 use yii\web\View;
 use kartik\form\ActiveForm;
 use kartik\widgets\SwitchInput;
-use usni\library\utils\CustomerTypeUtil;
 use yii\helpers\Html;
 
 $model  = $formDTO->getPerson();
 ?>
-<?= Html::activeHiddenInput($model, 'type', ['value' => CustomerTypeUtil::CUSTOMER_TYPE_COMPETITOR]);?>
 <?= Html::activeHiddenInput($model, 'couple', ['value' => 1]);?>
 <?= Html::activeHiddenInput($model, 'dancing_role', ['value' => 0]);?>
 <?= $form->field($model, 'firstname')->textInput();?>

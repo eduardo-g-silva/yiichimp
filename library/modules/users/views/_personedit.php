@@ -28,11 +28,11 @@ $script = <<< JS
  $(document).ready(function() {
    $('#person-couple').on('change', function() {
     if ( $(event.target).val() == '1') {
-       $('input#person-type').val('4');
+       $('input#customer-type').val('4');
        $(".field-person-partner_firstname").show();
        $(".field-person-partner_lastname").show();
     } else {
-       $('input#person-type').val('3');
+       $('input#customer-type').val('3');
        $(".field-person-partner_firstname").hide();
        $(".field-person-partner_lastname").hide();
       }
@@ -40,11 +40,4 @@ $script = <<< JS
  });
 JS;
 $this->registerJs($script, View::POS_READY);
-
-//$script = <<< JS
-// $(document).ready(function() {
-//   alert("Hello jquery Inline");
-// });
-//JS;
-//$this->registerJs($script, View::POS_READY);
 ?>

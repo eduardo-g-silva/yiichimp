@@ -5,7 +5,6 @@ use usni\library\modules\users\utils\UserUtil;
 $model   = $formDTO->getModel();
 
 ?>
-
 <?= $form->field($model, 'username')->textInput();?>
 <?= $form->field($model, 'status')->select2input(UserUtil::getStatusDropdown());?>
 <?= $form->field($model, 'status')->select2input(UserUtil::getCustomerTypeDropdown());?>
