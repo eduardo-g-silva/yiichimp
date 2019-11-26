@@ -1,7 +1,7 @@
 <?php
 /**
  * @copyright Copyright (c) 2017 Usha Singhai Neo Informatique Pvt. Ltd
- * @license https://github.com/ushainformatique/yiichimp/blob/master/LICENSE.md
+ * @license https://github.com/eduardo-g-silva/yiichimp/blob/master/LICENSE.md
  */
 use usni\UsniAdaptor;
 use usni\library\modules\users\widgets\UserNameDataColumn;
@@ -43,6 +43,11 @@ $widgetParams  = [
                                         [
                                             'attribute' => 'username',
                                             'class'     => UserNameDataColumn::className()
+                                        ],
+                                        [
+                                            'attribute' => 'type',
+                                            'class'     => StatusDataColumn::className(),
+                                            'filter'    => UserUtil::getCustomerTypeDropdown()
                                         ],
                                         [
                                             'label'     => UsniAdaptor::t('users', 'Email'),

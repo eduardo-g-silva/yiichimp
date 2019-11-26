@@ -1,7 +1,7 @@
 <?php
 /**
  * @copyright Copyright (c) 2017 Usha Singhai Neo Informatique Pvt. Ltd
- * @license https://github.com/ushainformatique/yiichimp/blob/master/LICENSE.md
+ * @license https://github.com/eduardo-g-silva/yiichimp/blob/master/LICENSE.md
  */
 namespace usni\library\modules\users\db;
 
@@ -25,6 +25,9 @@ class PersonTableBuilder extends TableBuilder
                 'mobilephone'   => $this->string(16),
                 'couple'         => $this->boolean(1),
                 'dancing_couple' => $this->string(64),
+                'partner_firstname'     => $this->string(32),
+                'partner_lastname'      => $this->string(32),
+                'mobilephone'   => $this->string(16),
                 'email'         => $this->string(64),
                 'avatar'        => $this->string(128),
                 'profile_image' => $this->string(255),

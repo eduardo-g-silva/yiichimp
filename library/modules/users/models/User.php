@@ -1,7 +1,7 @@
 <?php
 /**
  * @copyright Copyright (c) 2017 Usha Singhai Neo Informatique Pvt. Ltd
- * @license https://github.com/ushainformatique/yiichimp/blob/master/LICENSE.md
+ * @license https://github.com/eduardo-g-silva/yiichimp/blob/master/LICENSE.md
  */
 namespace usni\library\modules\users\models;
 
@@ -10,6 +10,7 @@ use usni\library\modules\auth\web\IAuthIdentity;
 use usni\UsniAdaptor;
 use usni\library\modules\auth\business\AuthManager;
 use usni\library\utils\ArrayUtil;
+
 
 /**
  * User is the base class for table tbl_user.

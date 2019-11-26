@@ -1,12 +1,14 @@
 <?php
 /**
  * @copyright Copyright (c) 2017 Usha Singhai Neo Informatique Pvt. Ltd
- * @license https://github.com/ushainformatique/yiichimp/blob/master/LICENSE.md
+ * @license https://github.com/eduardo-g-silva/yiichimp/blob/master/LICENSE.md
  */
 namespace usni\library\modules\users\utils;
 
+use usni\library\utils\CustomerTypeUtil;
 use usni\UsniAdaptor;
 use usni\library\modules\users\models\User;
+
 /**
  * Contains utility functions related to Users.
  * 
@@ -65,6 +67,7 @@ class UserUtil
             'confirmPassword'   => UsniAdaptor::t('users', 'Confirm Password'),
             'timezone'          => UsniAdaptor::t('users', 'Timezone'),
             'status'            => UsniAdaptor::t('application', 'Status'),
+            'type'            => UsniAdaptor::t('application', 'Type'),
             'groups'            => UsniAdaptor::t('auth',  'Group')
         ];
     }
@@ -120,4 +123,23 @@ class UserUtil
                     User::STATUS_PENDING    => UsniAdaptor::t('application','Pending')
                ];
     }
+
+
+    /**
+     * Gets status drop down.
+     * @return array
+     */
+    public static function getCustomerTypeDropdown()
+    {
+        return [
+            CustomerTypeUtil::CUSTOMER_TYPE_VOLUNTEER    => UsniAdaptor::t('application','Volunteer'),
+            CustomerTypeUtil::CUSTOMER_TYPE_CONCESSION     => UsniAdaptor::t('application','Concession'),
+            CustomerTypeUtil::CUSTOMER_TYPE_WORKSHOP     => UsniAdaptor::t('application','Workshop'),
+            CustomerTypeUtil::CUSTOMER_TYPE_FESTIVAL_SINGLE   => UsniAdaptor::t('application','Single'),
+            CustomerTypeUtil::CUSTOMER_TYPE_FESTIVAL_COUPLE     => UsniAdaptor::t('application','Couple'),
+            CustomerTypeUtil::CUSTOMER_TYPE_COMPETITOR   => UsniAdaptor::t('application','Competitor'),
+        ];
+    }
+
+
 }

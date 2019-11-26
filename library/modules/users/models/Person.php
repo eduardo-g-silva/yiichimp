@@ -1,7 +1,7 @@
 <?php
 /**
  * @copyright Copyright (c) 2017 Usha Singhai Neo Informatique Pvt. Ltd
- * @license https://github.com/ushainformatique/yiichimp/blob/master/LICENSE.md
+ * @license https://github.com/eduardo-g-silva/yiichimp/blob/master/LICENSE.md
  */
 namespace usni\library\modules\users\models;
 
@@ -44,10 +44,12 @@ class Person extends ActiveRecord
         {
             $labels = [
                         'id'                => UsniAdaptor::t('application', 'Id'),
-                        'firstname'         => UsniAdaptor::t('users','First Name'),
-                        'lastname'          => UsniAdaptor::t('users','Last Name'),
-                        'couple'            => UsniAdaptor::t('users','Couple'),
                         'dancing_role'      => UsniAdaptor::t('users','Dancing Role'),
+                        'firstname'         => UsniAdaptor::t('users','Your First Name'),
+                        'lastname'          => UsniAdaptor::t('users','Your Last Name'),
+                        'couple'            => UsniAdaptor::t('users','Registering as a Couple?'),
+                        'partner_firstname' => UsniAdaptor::t('users','Partner First Name'),
+                        'partner_lastname' => UsniAdaptor::t('users','Partner Last Name'),
                         'mobilephone'       => UsniAdaptor::t('users','Mobile'),
                         'email'             => UsniAdaptor::t('users','Email'),
                         'fullName'          => UsniAdaptor::t('users','Full Name'),
@@ -71,11 +73,11 @@ class Person extends ActiveRecord
         else
         {
             $scenarios                  = parent::scenarios();
-            $commonAttributes           = ['email', 'firstname', 'lastname', 'couple', 'dancing_role', 'mobilephone'];
+            $commonAttributes           = ['email', 'firstname', 'lastname', 'couple', 'dancing_role','partner_firstname','partner_lastname', 'mobilephone'];
             $scenarios['create']        = $scenarios['update'] = ArrayUtil::merge($commonAttributes, ['profile_image']);
-            $scenarios['registration']  = $scenarios['editprofile'] = ['firstname', 'lastname', 'email', 'couple', 'dancing_role', 'mobilephone'];
+            $scenarios['registration']  = $scenarios['editprofile'] = ['firstname', 'lastname', 'email', 'couple', 'dancing_role', 'partner_firstname', 'parter_lastname', 'mobilephone'];
             $scenarios['supercreate']   = $commonAttributes;
-            $scenarios['bulkedit']      = ['firstname', 'lastname', 'couple','dancing_role', 'mobilephone'];
+            $scenarios['bulkedit']      = ['firstname', 'lastname', 'couple','dancing_role', 'partner_firstname', 'partner_lastname', 'mobilephone'];
             $scenarios['deleteimage']   = ['profile_image'];
             return $scenarios;
         }
@@ -108,6 +110,8 @@ class Person extends ActiveRecord
                 [['couple'],                        'boolean'],
                 [['dancing_role'],                  'required'],
                 [['dancing_role'],                  'string'],
+                [['partner_firstname'],               'string'],
+                [['partner_lastname'],               'string'],
                 [['mobilephone'],                   'number'],
                 [['profile_image'],                 'file'],
                 ['profile_image',                   FileSizeValidator::className()],

@@ -17,7 +17,7 @@
         "fortawesome/font-awesome": "*"
     },
 	"support": {
-        "issues": "https://github.com/ushainformatique/yiichimp/issues"
+        "issues": "https://github.com/eduardo-g-silva/yiichimp/issues"
     },
     "minimum-stability": "stable",
     "require": {

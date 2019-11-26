@@ -8,6 +8,7 @@ $model   = $formDTO->getModel();
 
 <?= $form->field($model, 'username')->textInput();?>
 <?= $form->field($model, 'status')->select2input(UserUtil::getStatusDropdown());?>
+<?= $form->field($model, 'status')->select2input(UserUtil::getCustomerTypeDropdown());?>
 <?= $form->field($model, 'timezone')->select2input(TimezoneUtil::getTimezoneSelectOptions());?>
 <?= $form->field($model, 'groups')->select2input($formDTO->getGroups(), true, ['multiple'=>'multiple']);?>
 <?php
