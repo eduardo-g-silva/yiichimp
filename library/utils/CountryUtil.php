@@ -4,6 +4,7 @@
  * @license https://github.com/eduardo-g-silva/yiichimp/blob/master/LICENSE.md
  */
 namespace usni\library\utils;
+
 /**
  * Class consisting of utility functions related to countries.
  *

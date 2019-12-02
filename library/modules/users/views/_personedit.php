@@ -5,6 +5,7 @@ use kartik\form\ActiveForm;
 use kartik\widgets\SwitchInput;
 use usni\library\utils\CustomerTypeUtil;
 use yii\helpers\Html;
+use marqu3s\summernote\Summernote;
 
 
 $model  = $formDTO->getPerson();
@@ -21,7 +22,10 @@ $model  = $formDTO->getPerson();
 <?= Thumbnail::widget(['model' => $model,
                        'attribute' => 'profile_image',
                        'deleteUrl' => $deleteUrl]);?>
-<?= $form->field($model, 'profile_image')->fileInput();?>
+<?= $form->field($model, 'comments')->widget(Summernote::class, [
+    'options' => ['placeholder' => 'Anthing you want to let us know ...']
+    ]);
+?>
 
 <?php
 $script = <<< JS
