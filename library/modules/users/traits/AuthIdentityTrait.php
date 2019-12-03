@@ -336,9 +336,9 @@ trait AuthIdentityTrait
             return array(
                  'username'    => UsniAdaptor::t('userhint', 'Minimum 3 characters. Spaces not allowed. Allowed characters [a-zA-Z0-9._]'),
                  'email'       => UsniAdaptor::t('userhint', 'Letters, numbers & periods are allowed with a mail server name. eg test@yahoo.com'),
-                 'password'    => UsniAdaptor::t('userhint', 'Must be of 6-20 characters. Contains atleast one special, one numeric & one alphabet.'),
-                 'newPassword' => UsniAdaptor::t('userhint', 'Must be of 6-20 characters. Contains atleast one special, one numeric & one alphabet.'),
-                 'confirmPassword' => UsniAdaptor::t('userhint', 'Must be of 6-20 characters. Contains atleast one special, one numeric & one alphabet.')
+                 'password'    => UsniAdaptor::t('userhint', 'Must be of 6-20 characters. Contains at least one numeric & one alphabet.'),
+                 'newPassword' => UsniAdaptor::t('userhint', 'Must be of 6-20 characters. Contains at least one numeric & one alphabet.'),
+                 'confirmPassword' => UsniAdaptor::t('userhint', 'Must be of 6-20 characters. Contains at least one numeric & one alphabet.')
             );
         }
     }

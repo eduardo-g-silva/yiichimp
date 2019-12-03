@@ -82,8 +82,8 @@ class ChangePasswordForm extends Model
     public function attributeHints()
     {
         return [
-                    'newPassword' => UsniAdaptor::t('userhint', 'Must be of 6-20 characters. Contains atleast one special, one numeric & one alphabet.'),
-                    'confirmPassword' => UsniAdaptor::t('userhint', 'Must be of 6-20 characters. Contains atleast one special, one numeric & one alphabet.')
+                    'newPassword' => UsniAdaptor::t('userhint', 'Must be of 6-20 characters. Contains at least one numeric & one alphabet.'),
+                    'confirmPassword' => UsniAdaptor::t('userhint', 'Must be of 6-20 characters. Contains at least one numeric & one alphabet.')
                ];
     }
 }
