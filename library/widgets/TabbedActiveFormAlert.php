@@ -47,6 +47,6 @@ class TabbedActiveFormAlert extends \yii\bootstrap\Widget
             $style = "display:none";
         }
         echo '<div class="alert alert-danger" id="formErrorsInfo" style="' . $style . '">' . 
-                    UsniAdaptor::t('application', 'Please check the form carefully for the errors in the individual tabs.') . '</div>';
+                    UsniAdaptor::t('application', 'Please check the form carefully for the errors.') . '</div>';
     }
 }

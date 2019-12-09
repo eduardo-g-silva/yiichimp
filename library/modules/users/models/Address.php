@@ -55,8 +55,8 @@ class Address extends ActiveRecord
         else
         {
             return [
-                        //Address rules
-                        [['address1', 'city', 'country', 'postal_code'],    'required', 'except' => 'bulkedit'],
+                        //Address rules no need of address to register
+//                        [['address1', 'city', 'country', 'postal_code'],    'required', 'except' => 'bulkedit'],
                         [['address1', 'address2', 'relatedmodel'],          'string', 'max' => 128],
                         [['city', 'state', 'country'],                      'string', 'max' => 64],
                         [['relatedmodel_id', 'status'],                     'number', 'integerOnly' => true],
