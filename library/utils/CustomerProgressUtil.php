@@ -13,6 +13,7 @@ class CustomerProgressUtil
     const CUSTOMER_PROGRESS_WAITING = 0;
     const CUSTOMER_PROGRESS_APPROVED = 1;
     const CUSTOMER_PROGRESS_REJECTED = 2;
+    const CUSTOMER_PROGRESS_PAID = 3;
 
     /**
      * Gets customer progress dropdown.
@@ -24,6 +25,7 @@ class CustomerProgressUtil
             self::CUSTOMER_PROGRESS_WAITING     => UsniAdaptor::t('application','Waiting'),
             self::CUSTOMER_PROGRESS_APPROVED     => UsniAdaptor::t('application','Approved'),
             self::CUSTOMER_PROGRESS_REJECTED     => UsniAdaptor::t('application','Rejected'),
+            self::CUSTOMER_PROGRESS_PAID     => UsniAdaptor::t('application','Paid'),
         );
     }
 }
