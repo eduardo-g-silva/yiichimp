@@ -135,7 +135,8 @@ class UserUtil
             CustomerTypeUtil::CUSTOMER_TYPE_VOLUNTEER    => UsniAdaptor::t('application','Volunteer'),
             CustomerTypeUtil::CUSTOMER_TYPE_CONCESSION     => UsniAdaptor::t('application','Concession'),
             CustomerTypeUtil::CUSTOMER_TYPE_WORKSHOP     => UsniAdaptor::t('application','Workshop'),
-            CustomerTypeUtil::CUSTOMER_TYPE_FESTIVAL_SINGLE   => UsniAdaptor::t('application','Single'),
+            CustomerTypeUtil::CUSTOMER_TYPE_FESTIVAL_LEADER   => UsniAdaptor::t('application','Leader'),
+            CustomerTypeUtil::CUSTOMER_TYPE_FESTIVAL_FOLLOWER   => UsniAdaptor::t('application','Follower'),
             CustomerTypeUtil::CUSTOMER_TYPE_FESTIVAL_COUPLE     => UsniAdaptor::t('application','Couple'),
             CustomerTypeUtil::CUSTOMER_TYPE_COMPETITOR   => UsniAdaptor::t('application','Competitor'),
         ];

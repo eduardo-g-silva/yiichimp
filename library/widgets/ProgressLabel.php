@@ -37,6 +37,10 @@ class ProgressLabel extends \yii\bootstrap\Widget
         {
             return Label::widget(['content' => $value, 'modifier' => Html::COLOR_DANGER, 'id' => $id]);
         }
+        elseif ($this->model['progress'] == CustomerProgressUtil::CUSTOMER_PROGRESS_PAID)
+        {
+            return Label::widget(['content' => $value, 'modifier' => Html::COLOR_SUCCESS, 'id' => $id]);
+        }
     }
     
     /**
@@ -56,6 +60,10 @@ class ProgressLabel extends \yii\bootstrap\Widget
         elseif ($this->model['progress'] == CustomerProgressUtil::CUSTOMER_PROGRESS_REJECTED)
         {
             return UsniAdaptor::t('application', 'Rejected');
+        }
+        elseif ($this->model['progress'] == CustomerProgressUtil::CUSTOMER_PROGRESS_PAID)
+        {
+            return UsniAdaptor::t('application', 'Paid');
         }
     }
 }

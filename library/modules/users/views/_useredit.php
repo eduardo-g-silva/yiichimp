@@ -16,6 +16,7 @@ if($model->scenario == 'create' || $model->scenario == 'registration')
 ?>
     <?= $form->field($model, 'password')->passwordInput();?>
     <?= $form->field($model, 'confirmPassword')->passwordInput();?>
+    <?= $form->field($model, 'type')->dropDownList([CustomerTypeUtil::CUSTOMER_TYPE_FESTIVAL_COUPLE => 'Couple', CustomerTypeUtil::CUSTOMER_TYPE_FESTIVAL_LEADER => 'Leader',CustomerTypeUtil::CUSTOMER_TYPE_FESTIVAL_FOLLOWER => 'Follower'],['prompt'=>'Select Option']); ?>
 <?php
 }
 ?>

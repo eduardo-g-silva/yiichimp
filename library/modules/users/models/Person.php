@@ -50,10 +50,10 @@ class Person extends ActiveRecord
                         'lastname'          => UsniAdaptor::t('users','Your Last Name'),
                         'city'              => UsniAdaptor::t('users','City where you live'),
                         'nationality'       => UsniAdaptor::t('users','Nationality'),
-                        'couple'            => UsniAdaptor::t('users','Registering as a Couple?'),
-                        'facebook'            => UsniAdaptor::t('users','Facebook Profile URL'),
+                        'facebook'          => UsniAdaptor::t('users','Facebook Profile URL'),
+                        'partner_role'      => UsniAdaptor::t('users','Partner Role'),
                         'partner_firstname' => UsniAdaptor::t('users','Partner First Name'),
-                        'partner_lastname' => UsniAdaptor::t('users','Partner Last Name'),
+                        'partner_lastname'  => UsniAdaptor::t('users','Partner Last Name'),
                         'partner_nationality' => UsniAdaptor::t('users','Partner Nationality'),
                         'partner_city' => UsniAdaptor::t('users','Partner city where lives'),
                         'partner_facebook' => UsniAdaptor::t('users','Partner Facebook Profile URL'),
@@ -81,11 +81,11 @@ class Person extends ActiveRecord
         else
         {
             $scenarios                  = parent::scenarios();
-            $commonAttributes           = ['registration_type','firstname','lastname','mobilephone','email','nationality','city','facebook','avatar','profile_image','created_by','modified_by','created_datetime','modified_datetime','couple','dancing_role','partner_firstname','partner_lastname','partner_nationality','partner_city','partner_facebook','comments'];
+            $commonAttributes           = ['registration_type','firstname','lastname','mobilephone','email','nationality','city','facebook','avatar','profile_image','created_by','modified_by','created_datetime','modified_datetime','dancing_role','partner_role','partner_firstname','partner_lastname','partner_nationality','partner_city','partner_facebook','comments'];
             $scenarios['create']        = $scenarios['update'] = ArrayUtil::merge($commonAttributes, ['profile_image']);
-            $scenarios['registration']  = $scenarios['editprofile'] = ['registration_type','firstname','lastname','mobilephone','email','nationality','city','facebook','avatar','profile_image','created_by','modified_by','created_datetime','modified_datetime','couple','dancing_role','partner_firstname','partner_lastname','partner_nationality','partner_city','partner_facebook','comments'];
+            $scenarios['registration']  = $scenarios['editprofile'] = ['registration_type','firstname','lastname','mobilephone','email','nationality','city','facebook','avatar','profile_image','created_by','modified_by','created_datetime','modified_datetime','dancing_role','partner_role','partner_firstname','partner_lastname','partner_nationality','partner_city','partner_facebook','comments'];
             $scenarios['supercreate']   = $commonAttributes;
-            $scenarios['bulkedit']      = ['firstname', 'lastname', 'couple','dancing_role', 'partner_firstname', 'partner_lastname', 'mobilephone'];
+            $scenarios['bulkedit']      = ['firstname', 'lastname', 'dancing_role', 'partner_firstname','partner_role', 'partner_lastname', 'mobilephone'];
             $scenarios['deleteimage']   = ['profile_image'];
             return $scenarios;
         }
@@ -114,23 +114,39 @@ class Person extends ActiveRecord
                 ['email',                           'unique', 'targetClass' => Person::className(), 'on' => ['update', 'editprofile'], 
                                                     'filter' => ['!=', 'id', $this->id]],
                 ['email',                           EmailValidator::className()],
-                [['registration_type'],                  'string'],
+                [['registration_type'],             'string'],
+                ['registration_type', 'required', 'when' => function($model) {
+                    return $model->registration_type != 'N/A';
+                }],
                 [['nationality'],                  'string'],
+                ['nationality', 'required', 'when' => function($model) {
+                    return $model->registration_type != 'N/A';
+                }],
                 [['city'],                  'string'],
-                [['couple'],                        'required'],
-                [['couple'],                        'boolean'],
+                ['city', 'required', 'when' => function($model) {
+                    return $model->registration_type != 'N/A';
+                }],
                 [['dancing_role'],                  'required'],
                 [['dancing_role'],                  'string'],
+                [['partner_role'],                  'string'],
+                [['partner_firstname'],               'required'],
                 [['partner_firstname'],               'string'],
+                [['partner_lastname'],               'required'],
                 [['partner_lastname'],               'string'],
                 [['partner_city'],               'string'],
+                ['partner_city', 'required', 'when' => function($model) {
+                    return $model->registration_type != 'N/A';
+                }],
                 [['partner_nationality'],               'string'],
+                ['partner_nationality', 'required', 'when' => function($model) {
+                    return $model->registration_type != 'N/A';
+                }],
                 [['partner_facebook'],               'string'],
                 [['mobilephone'],                   'number'],
                 [['profile_image'],                 'file'],
                 ['profile_image',                   FileSizeValidator::className()],
                 [['profile_image', 'uploadInstance'],       'image', 'skipOnEmpty' => true, 'extensions' => 'jpg, png, gif, jpeg'],
-                [['firstname', 'lastname', 'mobilephone', 'couple', 'dancing_role', 'comments'],  'safe'],
+                [['firstname', 'lastname', 'mobilephone', 'dancing_role', 'partner_role', 'comments'],  'safe'],
             );
         }
     }

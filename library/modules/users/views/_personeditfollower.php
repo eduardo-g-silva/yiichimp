@@ -7,6 +7,7 @@ use usni\library\utils\NationalityUtil;
 
 $model  = $formDTO->getPerson();
 ?>
+<?= $form->field($model, 'partner_role')->textInput();?>
 <?= $form->field($model, 'partner_firstname')->textInput();?>
 <?= $form->field($model, 'partner_lastname')->textInput();?>
 <?= $form->field($model, 'partner_city')->textInput();?>

@@ -52,7 +52,7 @@ class UserDAO
         $peTableName            = $connection->tablePrefix . 'person';
         $adTableName            = $connection->tablePrefix . 'address';
         $dependency             = new DbDependency(['sql' => "SELECT MAX(modified_datetime) FROM $tableName WHERE id = :id", 'params' => [':id' => $id]]);
-        $sql                    = "SELECT u.*, pe.firstname, pe.lastname, pe.email, pe.couple, pe.dancing_role, pe.mobilephone, pe.profile_image,
+        $sql                    = "SELECT u.*, pe.firstname, pe.lastname, pe.email, pe.dancing_role, pe.mobilephone, pe.profile_image,
                                    ad.address1, ad.address2, ad.city, ad.state, ad.country, ad.postal_code
                                    FROM $tableName u, $peTableName pe, $adTableName ad 
                                    WHERE u.id = :uid AND u.person_id = pe.id AND pe.id = ad.relatedmodel_id AND ad.relatedmodel = :rm AND ad.type = :type";

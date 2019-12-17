@@ -25,6 +25,7 @@ class PersonTableBuilder extends TableBuilder
                 'mobilephone'   => $this->string(16),
                 'couple'         => $this->boolean(1),
                 'dancing_couple' => $this->string(64),
+                'partner_role'     => $this->string(32),
                 'partner_firstname'     => $this->string(32),
                 'partner_lastname'      => $this->string(32),
                 'mobilephone'   => $this->string(16),

@@ -41,9 +41,13 @@ class CustomerTypeLabel extends \yii\bootstrap\Widget
         {
             return Label::widget(['content' => $value, 'modifier' => Html::COLOR_INFO, 'id' => $id]);
         }
-        elseif ($this->model['type'] == CustomerTypeUtil::CUSTOMER_TYPE_FESTIVAL_SINGLE)
+        elseif ($this->model['type'] == CustomerTypeUtil::CUSTOMER_TYPE_FESTIVAL_LEADER)
         {
             return Label::widget(['content' => $value, 'modifier' => Html::COLOR_PRIMARY, 'id' => $id]);
+        }
+        elseif ($this->model['type'] == CustomerTypeUtil::CUSTOMER_TYPE_FESTIVAL_FOLLOWER)
+        {
+            return Label::widget(['content' => $value, 'modifier' => Html::COLOR_INFO, 'id' => $id]);
         }
         elseif ($this->model['type'] == CustomerTypeUtil::CUSTOMER_TYPE_FESTIVAL_COUPLE)
         {
@@ -73,9 +77,13 @@ class CustomerTypeLabel extends \yii\bootstrap\Widget
         {
             return UsniAdaptor::t('application', 'Workshop');
         }
-        elseif ($this->model['type'] == CustomerTypeUtil::CUSTOMER_TYPE_FESTIVAL_SINGLE)
+        elseif ($this->model['type'] == CustomerTypeUtil::CUSTOMER_TYPE_FESTIVAL_LEADER)
         {
-            return UsniAdaptor::t('application', 'Single');
+            return UsniAdaptor::t('application', 'Leader');
+        }
+        elseif ($this->model['type'] == CustomerTypeUtil::CUSTOMER_TYPE_FESTIVAL_FOLLOWER)
+        {
+            return UsniAdaptor::t('application', 'Follower');
         }
         elseif ($this->model['type'] == CustomerTypeUtil::CUSTOMER_TYPE_FESTIVAL_COUPLE)
         {
