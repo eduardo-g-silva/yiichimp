@@ -15,9 +15,11 @@ $model  = $formDTO->getPerson();
 <?= $form->field($model, 'lastname')->textInput();?>
 <?= $form->field($model, 'email')->textInput();?>
 <?= $form->field($model, 'mobilephone')->textInput();?>
+<?= $form->field($model, 'facebook')->textInput();?>
 <?= $form->field($model, 'partner_role')->dropDownList(['Leader' => 'Leader', 'Follower' => 'Follower'],['prompt'=>'Select Your Dancing Role']);?>
 <?= $form->field($model, 'partner_firstname')->textInput();?>
 <?= $form->field($model, 'partner_lastname')->textInput();?>
+<?= $form->field($model, 'partner_facebook')->textInput();?>
 <?= Thumbnail::widget(['model' => $model,
                        'attribute' => 'profile_image',
                        'deleteUrl' => $deleteUrl]);?>
