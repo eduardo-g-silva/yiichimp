@@ -107,7 +107,6 @@ class Person extends ActiveRecord
             return array(
                 //Person rules
                 [['firstname', 'lastname'],         'required'],
-                [['firstname', 'lastname'],         'match', 'pattern' => '/^[A-Z._]+$/i'],
                 [['firstname', 'lastname'],         'string', 'max' => 32],
                 ['email',                           'required'],
                 ['email',                           'unique', 'targetClass' => Person::className(), 'on' => ['create', 'registration']],
