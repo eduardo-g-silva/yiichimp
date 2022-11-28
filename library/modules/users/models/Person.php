@@ -54,6 +54,7 @@ class Person extends ActiveRecord
                         'partner_role'      => UsniAdaptor::t('users','Partner Role'),
                         'partner_firstname' => UsniAdaptor::t('users','Partner First Name'),
                         'partner_lastname'  => UsniAdaptor::t('users','Partner Last Name'),
+                        'partner_email'  => UsniAdaptor::t('users','Partner email'),
                         'partner_nationality' => UsniAdaptor::t('users','Partner Nationality'),
                         'partner_city' => UsniAdaptor::t('users','Partner city where lives'),
                         'partner_facebook' => UsniAdaptor::t('users','Partner Facebook Profile URL'),
@@ -81,9 +82,9 @@ class Person extends ActiveRecord
         else
         {
             $scenarios                  = parent::scenarios();
-            $commonAttributes           = ['registration_type','firstname','lastname','mobilephone','email','nationality','city','facebook','avatar','profile_image','created_by','modified_by','created_datetime','modified_datetime','dancing_role','partner_role','partner_firstname','partner_lastname','partner_nationality','partner_city','partner_facebook','comments'];
+            $commonAttributes           = ['registration_type','firstname','lastname','mobilephone','email','nationality','city','facebook','avatar','profile_image','created_by','modified_by','created_datetime','modified_datetime','dancing_role','partner_role','partner_firstname','partner_lastname','partner_email','partner_nationality','partner_city','partner_facebook','comments'];
             $scenarios['create']        = $scenarios['update'] = ArrayUtil::merge($commonAttributes, ['profile_image']);
-            $scenarios['registration']  = $scenarios['editprofile'] = ['registration_type','firstname','lastname','mobilephone','email','nationality','city','facebook','avatar','profile_image','created_by','modified_by','created_datetime','modified_datetime','dancing_role','partner_role','partner_firstname','partner_lastname','partner_nationality','partner_city','partner_facebook','comments'];
+            $scenarios['registration']  = $scenarios['editprofile'] = ['registration_type','firstname','lastname','mobilephone','email','nationality','city','facebook','avatar','profile_image','created_by','modified_by','created_datetime','modified_datetime','dancing_role','partner_role','partner_firstname','partner_lastname','partner_email','partner_nationality','partner_city','partner_facebook','comments'];
             $scenarios['supercreate']   = $commonAttributes;
             $scenarios['bulkedit']      = ['firstname', 'lastname', 'dancing_role', 'partner_firstname','partner_role', 'partner_lastname', 'mobilephone'];
             $scenarios['deleteimage']   = ['profile_image'];
@@ -132,6 +133,8 @@ class Person extends ActiveRecord
                 [['partner_firstname'],               'string'],
                 [['partner_lastname'],               'required'],
                 [['partner_lastname'],               'string'],
+                [['partner_email'],               'required'],
+                [['partner_email'],               'string'],
                 [['partner_city'],               'string'],
                 ['partner_city', 'required', 'when' => function($model) {
                     return $model->registration_type != 'N/A';

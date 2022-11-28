@@ -36,12 +36,15 @@ $script = <<< JS
        $('input#customer-type').val('4');
        $(".field-person-partner_role").show();
        $(".field-person-partner_firstname").show();
+       $(".field-person-partner_email").show();
        $(".field-person-partner_lastname").show();
+       $(".field-person-partner_email").show();
     } else {
        $('input#customer-type').val('3');
        $(".field-person-partner_role").hide();
        $(".field-person-partner_firstname").hide();
        $(".field-person-partner_lastname").hide();
+       $(".field-person-partner_email").hide();
       }
     });
    $('#person-dancing_role').on('change', function() {
