@@ -1,7 +1,7 @@
 <?php
 /**
  * @copyright Copyright (c) 2017 Usha Singhai Neo Informatique Pvt. Ltd
- * @license https://github.com/eduardo-g-silva/yiichimp/blob/master/LICENSE.md
+ * @license https://github.com/ushainformatique/yiichimp/blob/master/LICENSE.md
  */
 namespace usni\library\modules\install\business;
 
@@ -243,7 +243,7 @@ class InstallManager extends Component
     protected function processDataInstall($module, $loadDemoData, $formDTO)
     {
         $key = $module->id;
-        if($module->dataManager == null)
+        if(is_null($module->dataManager))
         {
             $dmPaths          = $module->dataManagerPath;
             foreach($dmPaths as $dmPath)

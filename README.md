@@ -12,7 +12,7 @@ This is same as what is required for Yii2. Please refer to http://www.yiiframewo
 
 HOW TO TEST
 ================================
-To test yiichimp framework, you can download the project https://github.com/eduardo-g-silva/yiichimp-app-basic.
+To test yiichimp framework, you can download the project https://github.com/ushainformatique/yiichimp-app-basic.
 
 SUPPORT
 ================================

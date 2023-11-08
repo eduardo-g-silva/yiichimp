@@ -1,7 +1,7 @@
 <?php
 /**
  * @copyright Copyright (c) 2017 Usha Singhai Neo Informatique Pvt. Ltd
- * @license https://github.com/eduardo-g-silva/yiichimp/blob/master/LICENSE.md
+ * @license https://github.com/ushainformatique/yiichimp/blob/master/LICENSE.md
  */
 namespace usni\library\bootstrap;
 
@@ -46,8 +46,8 @@ class ActiveForm extends \yii\bootstrap\ActiveForm
      */
     public function init()
     {
-        ob_start();
-        ob_implicit_flush(false);
+        //ob_start();
+        //ob_implicit_flush(false);
         parent::init();
     }
     
@@ -57,9 +57,9 @@ class ActiveForm extends \yii\bootstrap\ActiveForm
      */
     public function run()
     {
-        parent::run();
+        $formContent = parent::run();
         //Get the form content
-        $formContent = ob_get_clean();
+        //$formContent = ob_get_clean();
         
         //Get form content decorated
         if($this->decoratorView !== false)

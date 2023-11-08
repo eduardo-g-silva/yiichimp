@@ -1,7 +1,7 @@
 <?php
 /**
  * @copyright Copyright (c) 2017 Usha Singhai Neo Informatique Pvt. Ltd
- * @license https://github.com/eduardo-g-silva/yiichimp/blob/master/LICENSE.md
+ * @license https://github.com/ushainformatique/yiichimp/blob/master/LICENSE.md
  */
 return array(
     'bootstrap'          => ['log'],
@@ -75,8 +75,17 @@ return array(
                                 'authorizationManager' => ['class' => 'usni\library\modules\auth\business\AuthManager'],
                                 'configManager'      => ['class' => 'usni\library\business\ConfigManager'],
                                 'mailer' => [
-                                                'class' => 'yii\swiftmailer\Mailer',
+                                                'class' => 'yii\symfonymailer\Mailer',
                                                 'htmlLayout' => '@usni/library/mail/layouts/html',
+                                                'transport' => [
+                                                                    'scheme' => 'smtps',
+                                                                    'host' => '',
+                                                                    'username' => '',
+                                                                    'password' => '',
+                                                                    'port' => 465,
+                                                                    'dsn' => 'native://default',
+                                                                ],
+                                                'useFileTransport' => true,
                                             ]
                         ],
     'params'            => [],

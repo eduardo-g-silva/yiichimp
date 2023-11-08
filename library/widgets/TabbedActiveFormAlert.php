@@ -1,7 +1,7 @@
 <?php
 /**
  * @copyright Copyright (c) 2017 Usha Singhai Neo Informatique Pvt. Ltd
- * @license https://github.com/eduardo-g-silva/yiichimp/blob/master/LICENSE.md
+ * @license https://github.com/ushainformatique/yiichimp/blob/master/LICENSE.md
  */
 namespace usni\library\widgets;
 
@@ -47,6 +47,6 @@ class TabbedActiveFormAlert extends \yii\bootstrap\Widget
             $style = "display:none";
         }
         echo '<div class="alert alert-danger" id="formErrorsInfo" style="' . $style . '">' . 
-                    UsniAdaptor::t('application', 'Please check the form carefully for the errors.') . '</div>';
+                    UsniAdaptor::t('application', 'Please check the form carefully for the errors in the individual tabs.') . '</div>';
     }
 }
