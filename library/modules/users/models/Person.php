@@ -143,6 +143,8 @@ class Person extends ActiveRecord
                 ['partner_nationality', 'required', 'when' => function($model) {
                     return $model->registration_type != 'N/A';
                 }],
+                [['facebook'],               'string'],
+                [['facebook'], 'required'],
                 [['partner_facebook'],               'string'],
                 [['partner_facebook'], 'required'],
                 [['mobilephone'],                   'number'],
