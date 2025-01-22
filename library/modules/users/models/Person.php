@@ -13,7 +13,7 @@ use usni\library\validators\FileSizeValidator;
 use usni\library\utils\ArrayUtil;
 /**
  * This is the model class for table "person. The followings are the available model relations.
- * 
+ *
  * @package usni\library\modules\users\models
  */
 class Person extends ActiveRecord
@@ -23,7 +23,7 @@ class Person extends ActiveRecord
      * @var string
      */
     public $savedImage;
-    
+
     /**
      * Upload File Instance.
      * @var string
@@ -50,24 +50,24 @@ class Person extends ActiveRecord
                         'lastname'          => UsniAdaptor::t('users','Your Last Name'),
                         'city'              => UsniAdaptor::t('users','City where you live'),
                         'nationality'       => UsniAdaptor::t('users','Nationality'),
-                        'facebook'          => UsniAdaptor::t('users','Facebook Profile URL'),
+                        'facebook'          => UsniAdaptor::t('users','Facebook or Instagram Profile'),
                         'partner_role'      => UsniAdaptor::t('users','Partner Role'),
                         'partner_firstname' => UsniAdaptor::t('users','Partner First Name'),
                         'partner_lastname'  => UsniAdaptor::t('users','Partner Last Name'),
                         'partner_email'  => UsniAdaptor::t('users','Partner email'),
                         'partner_nationality' => UsniAdaptor::t('users','Partner Nationality'),
                         'partner_city' => UsniAdaptor::t('users','Partner city where lives'),
-                        'partner_facebook' => UsniAdaptor::t('users','Partner Facebook Profile URL'),
+                        'partner_facebook' => UsniAdaptor::t('users','Partner Facebook or Instagram Profile'),
                         'mobilephone'       => UsniAdaptor::t('users','Mobile'),
                         'email'             => UsniAdaptor::t('users','Email'),
                         'fullName'          => UsniAdaptor::t('users','Full Name'),
                         'profile_image'     => UsniAdaptor::t('users','Profile Image'),
-                        'comments'         => UsniAdaptor::t('users','Any Comments ?'),
+                        'comments'         => UsniAdaptor::t('users','If you share a room please provide name'),
                       ];
         }
         return parent::getTranslatedAttributeLabels($labels);
     }
-    
+
     /**
      * @inheritdoc
      */
@@ -91,7 +91,7 @@ class Person extends ActiveRecord
             return $scenarios;
         }
     }
-    
+
     /**
      * @inheritdoc
      */
@@ -111,7 +111,7 @@ class Person extends ActiveRecord
                 [['firstname', 'lastname'],         'string', 'max' => 32],
                 ['email',                           'required'],
                 ['email',                           'unique', 'targetClass' => Person::className(), 'on' => ['create', 'registration']],
-                ['email',                           'unique', 'targetClass' => Person::className(), 'on' => ['update', 'editprofile'], 
+                ['email',                           'unique', 'targetClass' => Person::className(), 'on' => ['update', 'editprofile'],
                                                     'filter' => ['!=', 'id', $this->id]],
                 ['email',                           EmailValidator::className()],
                 [['registration_type'],             'string'],
@@ -144,6 +144,7 @@ class Person extends ActiveRecord
                     return $model->registration_type != 'N/A';
                 }],
                 [['partner_facebook'],               'string'],
+                [['partner_facebook'], 'required'],
                 [['mobilephone'],                   'number'],
                 [['profile_image'],                 'file'],
                 ['profile_image',                   FileSizeValidator::className()],
@@ -172,7 +173,7 @@ class Person extends ActiveRecord
         return $this->hasOne(Address::className(), ['relatedmodel_id' => 'id'])
                     ->where('relatedmodel = :rm AND type = :type', [':rm' => 'Person', ':type' => Address::TYPE_DEFAULT]);
     }
-    
+
     /**
      * @inheritdoc
      */
@@ -180,7 +181,7 @@ class Person extends ActiveRecord
     {
         return UsniAdaptor::t('users', 'Person');
     }
-    
+
     /**
      * @inheritdoc
      */
@@ -192,9 +193,9 @@ class Person extends ActiveRecord
             {
                 //Delete image if exist
                 $config = [
-                            'model'             => $this, 
-                            'attribute'         => 'profile_image', 
-                            'uploadInstance'    => null, 
+                            'model'             => $this,
+                            'attribute'         => 'profile_image',
+                            'uploadInstance'    => null,
                             'savedFile'         => null,
                             'createThumbnail'   => true
                           ];
@@ -205,7 +206,7 @@ class Person extends ActiveRecord
         }
         return false;
     }
-    
+
     /**
      * Get full name for the user.
      * @return string
