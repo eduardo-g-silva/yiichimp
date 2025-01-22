@@ -145,8 +145,6 @@ class Person extends ActiveRecord
                 }],
                 [['facebook'],               'string'],
                 [['facebook'], 'required'],
-                [['partner_facebook'],               'string'],
-                [['partner_facebook'], 'required'],
                 [['mobilephone'],                   'number'],
                 [['profile_image'],                 'file'],
                 ['profile_image',                   FileSizeValidator::className()],
