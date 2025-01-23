@@ -164,12 +164,12 @@ class AuthManager extends \yii\base\Component implements CheckAccessInterface
         $batchData      = [];
         foreach ($permissions as $permission)
         {
-            $authPermission         = AuthDAO::getPermissionByName($permission);
+            $authPermission         = AuthDAO::getPermissionByName($permission) ?? [];
             $data['identity_type']  = $identityType;
             $data['identity_name']  = $identityName;
             $data['permission']     = $permission;
-            $data['resource']       = $authPermission['resource'];
-            $data['module']         = $authPermission['module'];
+            $data['resource']       = $authPermission['resource'] ?? '';
+            $data['module']         = $authPermission['module'] ?? '';
             $data['created_by']     = $userId;
             $data['created_datetime']     = date('Y-m-d H:i:s');
             $batchData[]            = $data;
@@ -184,7 +184,7 @@ class AuthManager extends \yii\base\Component implements CheckAccessInterface
             throw $e;
         }
     }
-    
+
     /**
      * Get assignments by identity.
      * @param string $identityName
@@ -193,8 +193,8 @@ class AuthManager extends \yii\base\Component implements CheckAccessInterface
      */
     public function getAssignmentsByIdentity($identityName, $identityType)
     {
-        return AuthAssignment::find()->where('identity_type = :aot AND identity_name = :aon', 
-                                                    [':aot' => $identityType, ':aon' => $identityName])->asArray()->all();
+        return AuthAssignment::find()->where('identity_type = :aot AND identity_name = :aon',
+            [':aot' => $identityType, ':aon' => $identityName])->asArray()->all();
     }
 
     /**
@@ -256,7 +256,7 @@ class AuthManager extends \yii\base\Component implements CheckAccessInterface
         {
             $condition = 'identity_name = :iname AND identity_type = :itype';
             $params    = [':itype'    => $identityType,
-                          ':iname'    => $identityName];
+                ':iname'    => $identityName];
         }
         AuthAssignment::deleteAll($condition, $params);
     }
@@ -282,7 +282,7 @@ class AuthManager extends \yii\base\Component implements CheckAccessInterface
                 }
             }
             $user                   = UserDAO::getById($userId);
-            $userPermissions        = $this->getAssignedPermissions($user['username'], 'user');
+            $userPermissions        = $this->getAssignedPermissions($user['username'] ??= 'default', 'user');
             $effectivePermissions   = ArrayUtil::merge($permissions, $userPermissions);
             CacheUtil::set($userId. '-effectivePermissions', $effectivePermissions);
         }
@@ -338,7 +338,7 @@ class AuthManager extends \yii\base\Component implements CheckAccessInterface
     public static function deleteAssignmentsByPermission($permission, $authType, $authName)
     {
         AuthAssignment::deleteAll('identity_name = :aon AND identity_type = :aot AND permission = :pm',
-                                  [':aon' => $authName, ':aot' => $authType, ':pm' => $permission]);
+            [':aon' => $authName, ':aot' => $authType, ':pm' => $permission]);
     }
 
     /**
@@ -405,9 +405,9 @@ class AuthManager extends \yii\base\Component implements CheckAccessInterface
         $data = $this->getConsolidatedModulePermissions($id);
         return count($data);
     }
-    
+
     /**
-     * Get consolidated module permissions. The permissions are returned like 
+     * Get consolidated module permissions. The permissions are returned like
      * [auth => AuthModule' => [], 'Group' => []] so we consolidate all the permissions
      * @param string $id
      * @return int
@@ -423,11 +423,11 @@ class AuthManager extends \yii\base\Component implements CheckAccessInterface
         }
         return $data;
     }
-    
+
     /**
-     * Check if user can access own records only. If user has at least one other 
-     * permission assigned, this would return false. 
-     * 
+     * Check if user can access own records only. If user has at least one other
+     * permission assigned, this would return false.
+     *
      * @param integer id of the user identity
      * @param string $permissionPrefix
      * @param array of other permissions
