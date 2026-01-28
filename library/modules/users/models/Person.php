@@ -62,7 +62,7 @@ class Person extends ActiveRecord
                         'email'             => UsniAdaptor::t('users','Email'),
                         'fullName'          => UsniAdaptor::t('users','Full Name'),
                         'profile_image'     => UsniAdaptor::t('users','Profile Image'),
-                        'comments'         => UsniAdaptor::t('users','If you share a room please provide name'),
+                        'comments'         => UsniAdaptor::t('users','Comments'),
                       ];
         }
         return parent::getTranslatedAttributeLabels($labels);
